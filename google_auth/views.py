@@ -29,7 +29,7 @@ def register():
     db_user = User.query.filter_by(email=user["email"]).first()
 
     if db_user:
-        return jsonify({"msg": "Email already registered"})
+        return jsonify({"msg": "Email already registred"})
 
     temp_user = {}
     user = jsonify(user)
