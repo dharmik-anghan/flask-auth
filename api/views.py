@@ -9,7 +9,7 @@ from api.resources.forgot_password import ForgotPassword
 
 user_blueprint = Blueprint("user", __name__, url_prefix="/user")
 user_api = Api(user_blueprint, errors=user_blueprint.errorhandler)
-user_api.add_resource(UserGet, "/")
+user_api.add_resource(UserGet, "/", "/delete")
 
 
 otp_blueprint = Blueprint("otp", __name__, url_prefix="/otp")

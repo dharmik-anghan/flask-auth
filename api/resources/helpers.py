@@ -5,6 +5,7 @@ from dotenv import load_dotenv
 from models.user import User
 from flask import abort
 from flask_jwt_extended import decode_token
+from extentions import pwd_context
 
 load_dotenv()
 
@@ -41,6 +42,11 @@ def get_latest_otp(user_id: int):
         .order_by(OTPDatabase.otp_received_at.desc())
         .first()
     )
+    print(latest_otp)
+
+    if latest_otp is None:
+        return False
+
     otp_expires_in = int(os.environ.get("OTP_EXPIRES_IN"))
 
     diff_btw_time = get_diff_btw_time(latest_otp.otp_received_at)
@@ -61,12 +67,15 @@ def verify_user_account(db, email, otp):
 
     latest_otp = get_latest_otp(user_id=user_id)
 
-    if otp == latest_otp._otp:
-        user.is_verified = True
-        db.session.commit()
-        return True
-    else:
-        return False
+    try:
+        if pwd_context.verify(otp, latest_otp._otp):
+            user.is_verified = True
+            db.session.commit()
+            return True
+        else:
+            return False
+    except Exception as e:
+        return e
 
 
 def get_user_id_from_token(token):
@@ -76,6 +85,7 @@ def get_user_id_from_token(token):
     user_id = decoded_token["user_id"]
 
     return user_id
+
 
 def forgot_database_user_password(db, email, otp, new_password):
     user = get_user_by_mail(email=email)

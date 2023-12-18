@@ -1,10 +1,10 @@
 from flask_restful import Resource
 from flask import request, jsonify
-from models.user import User
 from utils.sent_mail_to_user import sent_otp
-from extentions import db
+from extentions import db, pwd_context
 from api.schemas.otp_schema import OTPSchema
-from api.resources.helpers import get_user_by_mail
+from api.resources.helpers import get_user_by_mail, get_latest_otp
+from datetime import datetime, timezone
 
 
 class SentOTP(Resource):
@@ -22,11 +22,20 @@ class SentOTP(Resource):
             return {"msg": "Register your self!!!"}, 404
 
         otp = sent_otp(mail_to=user_email)
+        hashed_otp = pwd_context.hash(otp)
 
-        schema = OTPSchema()
+        otp_from_db = get_latest_otp(user_id=user_id)
+        print(otp_from_db)
 
-        store_otp = schema.load(data={"user_id": user_id, "_otp": otp})
-        db.session.add(store_otp)
+        if otp_from_db:
+            otp_from_db._otp = hashed_otp
+            otp_from_db.otp_received_at = datetime.now(timezone.utc)
+        else:
+            schema = OTPSchema()
+
+            store_otp = schema.load(data={"user_id": user_id, "_otp": hashed_otp})
+            db.session.add(store_otp)
+
         db.session.commit()
 
         return jsonify({"msg": "OTP sent successfully."})

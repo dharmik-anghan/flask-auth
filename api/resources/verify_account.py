@@ -1,8 +1,7 @@
 from flask_restful import Resource
 from flask import request, jsonify
-from models.user import User, OTPDatabase
 from extentions import db
-from api.resources.helpers import get_latest_otp, verify_user_account
+from api.resources.helpers import verify_user_account
 
 
 class VerifyAccount(Resource):

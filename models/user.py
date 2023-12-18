@@ -16,7 +16,7 @@ class User(db.Model):
     is_verified = db.Column(db.Boolean, default=False, nullable=False)
     is_active = db.Column(db.Boolean, default=True, nullable=False)
     is_deleted = db.Column(db.Boolean, default=False, nullable=False)
-    is_social= db.Column(db.Boolean, default=False, nullable=False)
+    is_social = db.Column(db.Boolean, default=False, nullable=False)
 
     created_at = db.Column(
         db.DateTime(timezone=True), nullable=False, default=datetime.now
@@ -44,13 +44,5 @@ class OTPDatabase(db.Model):
         db.DateTime(timezone=True), nullable=False, default=datetime.now
     )
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
-
-    @hybrid_property
-    def otp_user(self):
-        return self._otp
-
-    @otp_user.setter
-    def otp_user(self, value):
-        self._otp = pwd_context.hash(value)
 
     user_table = db.relationship("User", back_populates="user_otp")

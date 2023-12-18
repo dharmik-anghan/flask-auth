@@ -1,13 +1,15 @@
 from smtplib import SMTP
-from extentions import msg
 import math
 import random
 import os
+from email.message import EmailMessage
 
 from dotenv import load_dotenv
+
 load_dotenv()
 
 mail_from = "dharmikanghan09@gmail.com"
+
 
 def generate_otp():
     digits = "0123456789"
@@ -15,14 +17,17 @@ def generate_otp():
     otp = ""
 
     for i in range(6):
-        otp += digits[math.floor(random.random()*10)]
+        otp += digits[math.floor(random.random() * 10)]
 
     return otp
+
 
 def sent_otp(mail_to):
     __otp = generate_otp()
 
     content = f"{__otp} is your OTP. \nPlease do not share it with anyone."
+
+    msg = EmailMessage()
 
     msg.set_content(content)
 
