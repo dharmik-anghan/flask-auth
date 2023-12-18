@@ -16,6 +16,7 @@ class User(db.Model):
     is_verified = db.Column(db.Boolean, default=False, nullable=False)
     is_active = db.Column(db.Boolean, default=True, nullable=False)
     is_deleted = db.Column(db.Boolean, default=False, nullable=False)
+    is_social= db.Column(db.Boolean, default=False, nullable=False)
 
     created_at = db.Column(
         db.DateTime(timezone=True), nullable=False, default=datetime.now
