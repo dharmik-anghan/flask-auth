@@ -36,7 +36,7 @@ def register():
     user = user.get_json()
     username = user.get("email").split("@")
     password = (
-        (username[0][:3])
+        (username[0][:4])
         + (f"{choice(seq=['@', '#', '^', '&', '$'])}")
         + (f"{randint(10000,100000)}")
         + f"{choice(list('QWERTYUIOPLKJHGFDASZXCVBNM'))}"
@@ -47,6 +47,7 @@ def register():
     temp_user["password"] = password
     temp_user["username"] = username[0]
     temp_user["is_verified"] = True if user.get("email_verified") == True else False
+    temp_user["is_social"]  = True if user.get("email_verified") == True else False
 
     schema = UserCreateSchema()
     db_user = schema.load(temp_user)
@@ -58,7 +59,6 @@ def register():
     return {
         "msg": "User Created",
         "user": temp_user,
-        "security_alert": f"{password}, This is your system generated password, change it as soon as possible",
     }
 
 

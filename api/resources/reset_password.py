@@ -20,6 +20,6 @@ class ResetPassword(Resource):
             users.modified_at = datetime.now(timezone.utc)
             db.session.commit()
         else:
-            return jsonify({"msg": "Wrong old password"})
+            return jsonify({"msg": "Incorrect password"})
 
         return jsonify({"msg": "Reset-password Successfully"})

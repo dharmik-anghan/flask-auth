@@ -25,7 +25,6 @@ class SentOTP(Resource):
         hashed_otp = pwd_context.hash(otp)
 
         otp_from_db = get_latest_otp(user_id=user_id)
-        print(otp_from_db)
 
         if otp_from_db:
             otp_from_db._otp = hashed_otp
