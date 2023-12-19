@@ -1,5 +1,5 @@
 from flask import request
-from flask_jwt_extended import jwt_required
+from flask_jwt_extended import jwt_required, get_jwt_identity
 from flask_restful import Resource
 from datetime import datetime, timezone
 
@@ -12,7 +12,7 @@ class UserGet(Resource):
     method_decorators = [jwt_required()]
 
     def get(self):
-        user_id = get_user_id_from_token(request.headers)
+        user_id = get_jwt_identity()
         users = get_user_by_user_id(user_id=user_id)
 
         schema = UserSchema()
@@ -20,7 +20,7 @@ class UserGet(Resource):
         return {"result": schema.dump(users)}
     
     def delete(self):
-        user_id = get_user_id_from_token(request.headers)
+        user_id = get_jwt_identity()
         users = get_user_by_user_id(user_id=user_id)
         
         users.is_deleted = True
