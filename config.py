@@ -1,5 +1,6 @@
 import os
 from dotenv import load_dotenv
+from datetime import timedelta
 
 load_dotenv()
 
@@ -14,3 +15,5 @@ JWT_TOKEN_LOCATION = ["headers"]
 JWT_IDENTITY_CLAIM = "user_id"
 GOOGLE_CLIENT_ID = os.getenv("GOOGLE_CLIENT_ID")
 GOOGLE_CLIENT_SECRET = os.getenv("GOOGLE_CLIENT_SECRET")
+JWT_ACCESS_TOKEN_EXPIRES = timedelta(minutes=1)
+JWT_REFRESH_TOKEN_EXPIRES = timedelta(minutes=5)
