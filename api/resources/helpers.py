@@ -21,7 +21,7 @@ def get_user_by_mail(email):
 
 def get_user_by_user_id(user_id):
     user = User.query.filter_by(
-        id=int(user_id), is_deleted=False, is_active=True
+        id=user_id, is_deleted=False, is_active=True
     ).first()
 
     if user is None:
@@ -79,12 +79,10 @@ def verify_user_account(db, email, otp):
 
 
 def get_user_id_from_token(token):
-    token = token["Authorization"]
     token = token.split(" ")
     decoded_token = decode_token(token[1])
-    user_id = decoded_token["user_id"]
 
-    return user_id
+    return decoded_token
 
 
 def forgot_database_user_password(db, email, otp, new_password):
