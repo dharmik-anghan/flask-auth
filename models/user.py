@@ -2,16 +2,15 @@ from extentions import db, pwd_context
 
 from datetime import datetime
 from sqlalchemy.ext.hybrid import hybrid_property
-from sqlalchemy.dialects.postgresql import UUID
 from models.otp import OTPDatabase
 from models.auth import TokenBlockList
-import uuid
+from models.post import Post
 
 
 class User(db.Model):
     __tablename__ = "users"
 
-    id = db.Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     email = db.Column(db.String(100), unique=True, nullable=False)
     full_name = db.Column(db.String(40), nullable=False)
     username = db.Column(db.String(15), unique=True, nullable=False)
@@ -38,5 +37,7 @@ class User(db.Model):
 
     token = db.relationship("TokenBlockList", back_populates="user")
     user_otp = db.relationship("OTPDatabase", back_populates="user_table")
+    post_table= db.relationship("Post", back_populates="user_table")
+    post_like_table = db.relationship("PostLike", back_populates="user_table")
 
 

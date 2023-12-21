@@ -1,6 +1,5 @@
 from extentions import db
 from datetime import datetime
-from sqlalchemy.dialects.postgresql import UUID
 
 
 class TokenBlockList(db.Model):
@@ -9,7 +8,7 @@ class TokenBlockList(db.Model):
     jti = db.Column(db.String, nullable=False)
     token_type = db.Column(db.String, nullable=False)
     user_id = db.Column(
-        UUID(as_uuid=True), db.ForeignKey("users.id"), nullable=False, index=True
+        db.Integer, db.ForeignKey("users.id"), nullable=False, index=True
     )
     revoked_at = db.Column(db.DateTime(timezone=True))
     expires = db.Column(
