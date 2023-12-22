@@ -5,6 +5,9 @@ from sqlalchemy.ext.hybrid import hybrid_property
 from models.otp import OTPDatabase
 from models.auth import TokenBlockList
 from models.post import Post
+from models.post_comments import PostComment
+from models.post_comment_likes import PostCommentLikes
+from models.follower_following import FollowerFollowing
 
 
 class User(db.Model):
@@ -37,7 +40,29 @@ class User(db.Model):
 
     token = db.relationship("TokenBlockList", back_populates="user")
     user_otp = db.relationship("OTPDatabase", back_populates="user_table")
-    post_table= db.relationship("Post", back_populates="user_table")
+
+    # post.py
+    post_table = db.relationship("Post", back_populates="user_table")
+
+    # post_likes.py
     post_like_table = db.relationship("PostLike", back_populates="user_table")
 
+    # post_comment.py
+    post_comment_table = db.relationship("PostComment", back_populates="user_table")
 
+    # post_comment_likes.py
+    post_comment_likes_table = db.relationship(
+        "PostCommentLikes", back_populates="user_table"
+    )
+
+    # follower_following.py
+    follower = db.relationship(
+        "FollowerFollowing",
+        back_populates="user_follower_table",
+        foreign_keys="FollowerFollowing.followed_by",
+    )
+    following = db.relationship(
+        "FollowerFollowing",
+        back_populates="user_following_table",
+        foreign_keys="FollowerFollowing.user_id",
+    )
