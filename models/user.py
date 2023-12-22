@@ -8,6 +8,7 @@ from models.post import Post
 from models.post_comments import PostComment
 from models.post_comment_likes import PostCommentLikes
 from models.follower_following import FollowerFollowing
+from models.post_comment_reply import PostCommentReply
 
 
 class User(db.Model):
@@ -66,3 +67,5 @@ class User(db.Model):
         back_populates="user_following_table",
         foreign_keys="FollowerFollowing.user_id",
     )
+
+    post_comment_reply_table = db.relationship("PostCommentReply",back_populates="user_table")

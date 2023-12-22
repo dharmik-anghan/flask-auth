@@ -1,6 +1,7 @@
 from extentions import db
 from datetime import datetime
 from models.post_comment_likes import PostCommentLikes
+from models.post_comment_reply import PostCommentReply
 
 
 class PostComment(db.Model):
@@ -31,3 +32,5 @@ class PostComment(db.Model):
     post_comment_likes_table = db.relationship(
         "PostCommentLikes", back_populates="post_comment_table"
     )
+
+    post_comment_reply_table = db.relationship("PostCommentReply", back_populates="post_comment_table")

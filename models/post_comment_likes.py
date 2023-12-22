@@ -9,6 +9,9 @@ class PostCommentLikes(db.Model):
     comment_id = db.Column(
         db.Integer, db.ForeignKey("post_comments.id"), nullable=False
     )
+    reply_id = db.Column(
+        db.Integer, db.ForeignKey("post_comments_reply.id"), nullable=True
+    )
     post_id = db.Column(db.Integer, db.ForeignKey("posts.id"), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
     created_at = db.Column(
@@ -24,4 +27,8 @@ class PostCommentLikes(db.Model):
     # comment.py
     post_comment_table = db.relationship(
         "PostComment", back_populates="post_comment_likes_table"
+    )
+
+    post_comment_reply_table= db.relationship(
+        "PostCommentReply", back_populates="post_comment_likes_table"
     )
