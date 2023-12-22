@@ -7,10 +7,10 @@ class PostCommentLikes(db.Model):
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     comment_id = db.Column(
-        db.Integer, db.ForeignKey("post_comments.id"), nullable=False
+        db.Integer, db.ForeignKey("post_comments.id"), nullable=False, index=True
     )
     reply_id = db.Column(
-        db.Integer, db.ForeignKey("post_comments_reply.id"), nullable=True
+        db.Integer, db.ForeignKey("post_comments_reply.id"), nullable=True, index=True
     )
     post_id = db.Column(db.Integer, db.ForeignKey("posts.id"), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)

@@ -34,4 +34,3 @@ class PostCommentReply(db.Model):
 
     post_comment_table = db.relationship("PostComment", back_populates="post_comment_reply_table")
 
-    post_comment_likes_table= db.relationship("PostCommentLikes", back_populates="post_comment_reply_table")

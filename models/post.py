@@ -21,6 +21,7 @@ class Post(db.Model):
     )
     like_count = db.Column(db.Integer, nullable=True)
     comment_count = db.Column(db.Integer, nullable=True)
+    is_archive = db.Column(db.Boolean, default=False)
 
     user_table = db.relationship("User", back_populates="post_table")
     post_like_table = db.relationship("PostLike", back_populates="post_table")
