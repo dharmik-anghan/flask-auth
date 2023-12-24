@@ -6,6 +6,7 @@ from api.resources.sentotp import SentOTP
 from api.resources.verify_account import VerifyAccount
 from api.resources.reset_password import ResetPassword
 from api.resources.forgot_password import ForgotPassword
+from api.resources.post import PostResource
 
 user_blueprint = Blueprint("user", __name__, url_prefix="/user")
 user_api = Api(user_blueprint, errors=user_blueprint.errorhandler)
@@ -17,12 +18,12 @@ otp_api = Api(otp_blueprint, errors=otp_blueprint.errorhandler)
 otp_api.add_resource(SentOTP, "/send-otp")
 
 
-verify_ac_blueprint = Blueprint("verify_ac", __name__, url_prefix="/verify-account")
+verify_ac_blueprint = Blueprint("verify_account", __name__, url_prefix="/verify-account")
 verify_ac_api = Api(verify_ac_blueprint, errors=verify_ac_blueprint.errorhandler)
 verify_ac_api.add_resource(VerifyAccount, "/")
 
 
-reset_password_blueprint = Blueprint("reset_ac", __name__, url_prefix="/reset-password")
+reset_password_blueprint = Blueprint("reset_password", __name__, url_prefix="/reset-password")
 reset_password_api = Api(
     reset_password_blueprint, errors=reset_password_blueprint.errorhandler
 )
@@ -36,3 +37,8 @@ forgot_password_api = Api(
     forgot_password_blueprint, errors=forgot_password_blueprint.errorhandler
 )
 forgot_password_api.add_resource(ForgotPassword, "/")
+
+
+posts_blueprint = Blueprint("posts", __name__, url_prefix="/posts")
+posts_api = Api(posts_blueprint, errors=posts_blueprint.errorhandler)
+posts_api.add_resource(PostResource, "/create-posts")

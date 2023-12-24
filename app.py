@@ -7,6 +7,7 @@ from api.views import (
     verify_ac_blueprint,
     reset_password_blueprint,
     forgot_password_blueprint,
+    posts_blueprint
 )
 from google_auth.views import google_oauth
 import os
@@ -25,6 +26,7 @@ app.register_blueprint(blueprint=verify_ac_blueprint)
 app.register_blueprint(blueprint=reset_password_blueprint)
 app.register_blueprint(blueprint=forgot_password_blueprint)
 app.register_blueprint(blueprint=google_oauth)
+app.register_blueprint(blueprint=posts_blueprint)
 
 db.init_app(app=app)
 jwt.init_app(app=app)

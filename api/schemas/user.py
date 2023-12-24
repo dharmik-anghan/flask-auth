@@ -18,7 +18,7 @@ class UserSchema(ma.SQLAlchemyAutoSchema):
     class Meta:
         model = User
         load_instance = True
-        exclude = ["id", "_password", "is_deleted", "modified_at", "is_active"]
+        exclude = ["_password", "is_deleted", "modified_at", "is_active"]
 
 
 class UserCreateSchema(UserSchema):

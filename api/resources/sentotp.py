@@ -3,7 +3,7 @@ from flask import request, jsonify
 from utils.sent_mail_to_user import sent_otp
 from extentions import db, pwd_context
 from api.schemas.otp_schema import OTPSchema
-from api.resources.helpers import get_user_by_mail, get_latest_otp
+from api.resources.helpers import get_user_by_mail, get_otp_details
 from datetime import datetime, timezone
 
 
@@ -24,7 +24,7 @@ class SentOTP(Resource):
         otp = sent_otp(mail_to=user_email)
         hashed_otp = pwd_context.hash(otp)
 
-        otp_from_db = get_latest_otp(user_id=user_id)
+        otp_from_db = get_otp_details(user_id=user_id)
 
         if otp_from_db:
             otp_from_db._otp = hashed_otp

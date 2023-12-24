@@ -35,14 +35,15 @@ def get_diff_btw_time(registered_time: datetime):
     diff_btw_time = current_time - registered_time
     return diff_btw_time
 
-
-def get_latest_otp(user_id: int):
-    latest_otp = (
+def get_otp_details(user_id):
+    return (
         OTPDatabase.query.filter_by(user_id=user_id)
         .order_by(OTPDatabase.otp_received_at.desc())
         .first()
     )
-    print(latest_otp)
+
+def get_latest_otp(user_id: int):
+    latest_otp = get_otp_details(user_id)
 
     if latest_otp is None:
         return False
