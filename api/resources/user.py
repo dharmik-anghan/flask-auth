@@ -5,7 +5,7 @@ from datetime import datetime, timezone
 
 from api.schemas.user import UserSchema
 from extentions import db
-from api.resources.helpers import get_user_id_from_token, get_user_by_user_id
+from api.helpers.user_helpers import get_user_id_from_token, get_user_by_user_id
 
 
 class UserGet(Resource):

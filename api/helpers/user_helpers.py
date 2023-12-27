@@ -106,7 +106,7 @@ def forgot_database_user_password(db, email, otp, new_password):
 def check_user_email_verification(func):
     def wrapper(self, *args, **kwargs):
         user_id = get_jwt_identity()
-        user = get_user_by_user_id(user_id).first()
+        user = get_user_by_user_id(user_id) 
         if user.is_verified is False:
             abort(401, "Account not verified")
         return func(self, *args, **kwargs)

@@ -1,5 +1,5 @@
 from flask_restful import Resource
-from api.resources.helpers import forgot_database_user_password, get_user_by_mail, get_latest_otp
+from api.helpers.user_helpers import forgot_database_user_password, get_user_by_mail, get_latest_otp
 from flask import request, jsonify
 from extentions import db
 

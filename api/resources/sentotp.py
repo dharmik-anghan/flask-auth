@@ -3,7 +3,7 @@ from flask import request, jsonify
 from utils.sent_mail_to_user import sent_otp
 from extentions import db, pwd_context
 from api.schemas.otp_schema import OTPSchema
-from api.resources.helpers import get_user_by_mail, get_otp_details
+from api.helpers.user_helpers import get_user_by_mail, get_otp_details
 from datetime import datetime, timezone
 
 

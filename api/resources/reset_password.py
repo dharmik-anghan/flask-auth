@@ -1,6 +1,6 @@
 from flask_restful import Resource
 from flask_jwt_extended import jwt_required
-from api.resources.helpers import get_user_id_from_token, get_user_by_user_id
+from api.helpers.user_helpers import get_user_id_from_token, get_user_by_user_id
 from flask import request, jsonify
 from extentions import db, pwd_context
 from datetime import datetime, timezone

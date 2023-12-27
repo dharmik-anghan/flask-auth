@@ -1,5 +1,5 @@
 from marshmallow import validate, ValidationError, validates_schema
-from marshmallow.fields import String
+from marshmallow.fields import String, Boolean
 
 from extentions import ma
 from models.user import User
@@ -31,3 +31,5 @@ class UserCreateSchema(UserSchema):
             )
         ],
     )
+    is_public = Boolean(required=True)
+

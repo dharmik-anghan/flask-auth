@@ -4,7 +4,9 @@ from api.helpers.post_comment_helpers import (
     comment_on_post,
     get_comments_on_post,
     update_comment_on_post,
-    delete_comment_on_post
+    delete_comment_on_post,
+    like_the_comment,
+    dislike_the_comment,
 )
 from api.helpers.post_helpers import check_post_if_not_deleted
 from flask_jwt_extended import jwt_required, get_jwt_identity
@@ -80,8 +82,8 @@ class PostCommentResource(Resource):
             comment_id = request.args.get("comment_id", type=int)
 
             if comment_id is None:
-                    return {"msg": "Missing comment id"}
-            
+                return {"msg": "Missing comment id"}
+
             user_id = get_jwt_identity()
             post_id = request.args.get("post_id")
 
@@ -93,7 +95,37 @@ class PostCommentResource(Resource):
                 return {"msg": "Operation unsuccesfull"}
         else:
             return {"msg": "Path not defined"}, 405
+        
 
+class CommentLike(Resource):
+    method_decorators = [jwt_required()]
 
+    def post(self):
+        if request.path == "/posts/like-comment":
+            comment_id = request.args.get("comment_id")
+            post_id = request.args.get("post_id")
+            user_id = get_jwt_identity()
 
+            if comment_id and post_id:
+                liked_comment = like_the_comment(request, user_id)
 
+                if liked_comment:
+                    return {"msg": "Liked comment"}
+                else:
+                    return {"msg": "Alredy Liked"}
+                
+
+    def delete(self):
+        if request.path == "/posts/like-comment":
+            comment_id = request.args.get("comment_id")
+            post_id = request.args.get("post_id")
+            user_id = get_jwt_identity()
+
+            if comment_id and post_id:
+                disliked_comment = dislike_the_comment(request, user_id)
+
+                if disliked_comment:
+                    return {"msg": "disiked comment"}
+                else:
+                    return {"msg": "No liked comment"}, 404
+            
