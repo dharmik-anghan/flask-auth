@@ -1,13 +1,12 @@
-from api.schemas.post_comment import PostCommentResponseSchema, PostCreateCommentSchema
-from api.schemas.comment_and_reply_like import PostCommentLikeCreateSchema
-from api.helpers.post_helpers import get_post_by_post_id
-from models.post_comments import PostComment
-from models.post_comment_likes import PostCommentLikes
 from flask import abort
 from extentions import db
 from datetime import datetime, timezone
+from models.post_comments import PostComment
 from models.post_comment_reply import PostCommentReply
-
+from models.post_comment_likes import PostCommentLikes
+from api.helpers.post_helpers import get_post_by_post_id
+from api.schemas.comment_and_reply_like import PostCommentLikeCreateSchema
+from api.schemas.post_comment import PostCommentResponseSchema, PostCreateCommentSchema
 
 
 def total_comment_on_post(post_id):
@@ -67,6 +66,7 @@ def get_comment_by_comment_id(comment_id):
         abort(404, "No content found")
     return comment
 
+
 def when_delete_comment_delete_all_data_related(comment_id):
     likes = PostCommentLikes.query.filter_by(comment_id=comment_id).all()
     for like in likes:
@@ -74,6 +74,7 @@ def when_delete_comment_delete_all_data_related(comment_id):
     replies = PostCommentReply.query.filter_by(comment_id=comment_id).all()
     for reply in replies:
         db.session.delete(reply)
+
 
 def delete_comment_on_post(comment_id, user_id, post_id):
     comment = get_comment_by_comment_id(comment_id)

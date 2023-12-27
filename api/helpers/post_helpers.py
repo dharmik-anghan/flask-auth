@@ -1,11 +1,11 @@
-from models.post import Post
-from models.post_likes import PostLike
-from models.post_comments import PostComment
-from api.helpers.user_helpers import get_user_by_user_id
-from api.schemas.post_like import PostLikeCreateSchema
-from flask import abort, jsonify, request
 from extentions import db
+from models.post import Post
+from flask import abort, request
+from models.post_likes import PostLike
 from datetime import datetime, timezone
+from models.post_comments import PostComment
+from api.schemas.post_like import PostLikeCreateSchema
+from api.helpers.user_helpers import get_user_by_user_id
 
 def update_post_count_in_user_table(user_id):
     user = get_user_by_user_id(user_id)

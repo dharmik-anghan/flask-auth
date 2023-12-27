@@ -1,12 +1,12 @@
-from models.user import OTPDatabase
-from models.user import User
-from datetime import datetime, timedelta, timezone
 import os
-from dotenv import load_dotenv
 from flask import abort
+from models.user import User
+from dotenv import load_dotenv
+from models.user import OTPDatabase
+from extentions import pwd_context
 from flask_jwt_extended import decode_token
-from extentions import pwd_context, db
 from flask_jwt_extended import get_jwt_identity
+from datetime import datetime, timedelta, timezone
 
 load_dotenv()
 
