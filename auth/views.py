@@ -1,4 +1,9 @@
+from models.user import User
+from flask import current_app as app
+from extentions import pwd_context, jwt, db
 from flask import request, jsonify, Blueprint
+from api.schemas.user import UserCreateSchema, UserSchema
+from auth.helpers import add_token_to_database, revoke_token, is_token_revoked
 from flask_jwt_extended import (
     create_access_token,
     create_refresh_token,
@@ -6,11 +11,6 @@ from flask_jwt_extended import (
     get_jwt_identity,
     get_jwt,
 )
-from auth.helpers import add_token_to_database, revoke_token, is_token_revoked
-from flask import current_app as app
-from api.schemas.user import UserCreateSchema, UserSchema
-from extentions import pwd_context, jwt, db
-from models.user import User
 
 auth_blueprint = Blueprint("auth", __name__, url_prefix="/auth")
 

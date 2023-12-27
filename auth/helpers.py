@@ -1,9 +1,10 @@
 from extentions import db
-from models.auth import TokenBlockList
 from flask import current_app as app
-from flask_jwt_extended import decode_token
+from models.auth import TokenBlockList
 from datetime import datetime, timezone
 from sqlalchemy.exc import NoResultFound
+from flask_jwt_extended import decode_token
+
 
 def add_token_to_database(encoded_token):
     decoded_token = decode_token(encoded_token=encoded_token)
@@ -13,14 +14,12 @@ def add_token_to_database(encoded_token):
     expires = datetime.fromtimestamp(decoded_token["exp"])
 
     db_token = TokenBlockList(
-        jti=jti,
-        expires=expires,
-        token_type=token_type,
-        user_id=user_id
+        jti=jti, expires=expires, token_type=token_type, user_id=user_id
     )
 
     db.session.add(db_token)
     db.session.commit()
+
 
 def revoke_token(token_jti, user_id):
     try:
@@ -29,7 +28,8 @@ def revoke_token(token_jti, user_id):
         db.session.commit()
     except NoResultFound:
         raise Exception(f"Could not find token {token_jti}")
-    
+
+
 def is_token_revoked(jwt_payload):
     jti = jwt_payload["jti"]
     user_id = jwt_payload[app.config.get("JWT_IDENTITY_CLAIM")]
