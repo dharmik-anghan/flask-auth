@@ -7,7 +7,12 @@ from api.views import (
     verify_ac_blueprint,
     reset_password_blueprint,
     forgot_password_blueprint,
-    posts_blueprint
+    posts_blueprint,
+    posts_like_blueprint,
+    posts_comment_blueprint,
+    comment_like_blueprint,
+    comment_reply_like_blueprint,
+    reply_like_blueprint
 )
 from google_auth.views import google_oauth
 import os
@@ -27,6 +32,11 @@ app.register_blueprint(blueprint=reset_password_blueprint)
 app.register_blueprint(blueprint=forgot_password_blueprint)
 app.register_blueprint(blueprint=google_oauth)
 app.register_blueprint(blueprint=posts_blueprint)
+app.register_blueprint(blueprint=posts_like_blueprint)
+app.register_blueprint(blueprint=posts_comment_blueprint)
+app.register_blueprint(blueprint=comment_like_blueprint)
+app.register_blueprint(blueprint=comment_reply_like_blueprint)
+app.register_blueprint(blueprint=reply_like_blueprint)
 
 db.init_app(app=app)
 jwt.init_app(app=app)
