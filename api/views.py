@@ -1,6 +1,5 @@
 from flask import Blueprint
 from flask_restful import Api
-
 from api.resources.user import UserGet
 from api.resources.sentotp import SentOTP
 from api.resources.verify_account import VerifyAccount
@@ -54,16 +53,32 @@ posts_like_api = Api(posts_like_blueprint, errors=posts_like_blueprint.errorhand
 posts_like_api.add_resource(PostLikeResource, "/like", "/dislike")
 
 posts_comment_blueprint = Blueprint("post_comment", __name__, url_prefix="/posts")
-posts_comment_api = Api(posts_comment_blueprint, errors=posts_comment_blueprint.errorhandler)
-posts_comment_api.add_resource(PostCommentResource, "/comment", "/viewcomments", "/update-comment", "/delete-comment")
+posts_comment_api = Api(
+    posts_comment_blueprint, errors=posts_comment_blueprint.errorhandler
+)
+posts_comment_api.add_resource(
+    PostCommentResource,
+    "/comment",
+    "/viewcomments",
+    "/update-comment",
+    "/delete-comment",
+)
 
 comment_like_blueprint = Blueprint("comment-like", __name__, url_prefix="/posts")
-comment_like_api = Api(comment_like_blueprint, errors=comment_like_blueprint.errorhandler)
+comment_like_api = Api(
+    comment_like_blueprint, errors=comment_like_blueprint.errorhandler
+)
 comment_like_api.add_resource(CommentLike, "/like-comment")
 
-comment_reply_like_blueprint = Blueprint("comment-reply", __name__, url_prefix="/posts/comment")
-comment_reply_like_api = Api(comment_reply_like_blueprint, errors=comment_reply_like_blueprint.errorhandler)
-comment_reply_like_api.add_resource(PostCommentReplyResource, "/reply", "/viewreplies", "/update-reply", "/delete-reply")
+comment_reply_like_blueprint = Blueprint(
+    "comment-reply", __name__, url_prefix="/posts/comment"
+)
+comment_reply_like_api = Api(
+    comment_reply_like_blueprint, errors=comment_reply_like_blueprint.errorhandler
+)
+comment_reply_like_api.add_resource(
+    PostCommentReplyResource, "/reply", "/viewreplies", "/update-reply", "/delete-reply"
+)
 
 reply_like_blueprint = Blueprint("reply-like", __name__, url_prefix="/posts")
 reply_like_api = Api(reply_like_blueprint, errors=reply_like_blueprint.errorhandler)
