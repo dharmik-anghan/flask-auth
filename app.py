@@ -1,6 +1,9 @@
+import os
 from flask import Flask
+from dotenv import load_dotenv
 from extentions import db, jwt, oauth
 from auth.views import auth_blueprint
+from google_auth.views import google_oauth
 from api.views import (
     user_blueprint,
     otp_blueprint,
@@ -14,9 +17,6 @@ from api.views import (
     comment_reply_like_blueprint,
     reply_like_blueprint
 )
-from google_auth.views import google_oauth
-import os
-from dotenv import load_dotenv
 
 load_dotenv()
 
