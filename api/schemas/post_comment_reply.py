@@ -23,5 +23,5 @@ class PostCommentReplyResponseSchema(PostCommentSchema):
             "user_id",
             "created_at",
             "modified_at",
-            "reply_like_count"
+            "reply_like_count",
         ]

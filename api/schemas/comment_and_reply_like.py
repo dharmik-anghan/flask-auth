@@ -15,6 +15,8 @@ class PostCommentLikeCreateSchema(PostCommentLikeSchema):
             "post_id",
             "user_id",
         ]
+
+
 class PostReplyLikeCreateSchema(PostCommentLikeSchema):
     class Meta(PostCommentLikeSchema.Meta):
         fields = [
