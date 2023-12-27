@@ -21,9 +21,7 @@ def get_user_by_mail(email):
 
 
 def get_user_by_user_id(user_id):
-    user = User.query.filter_by(
-        id=user_id, is_deleted=False, is_active=True
-    ).first()
+    user = User.query.filter_by(id=user_id, is_deleted=False, is_active=True).first()
 
     if user is None:
         abort(404, "User not found")
@@ -36,12 +34,14 @@ def get_diff_btw_time(registered_time: datetime):
     diff_btw_time = current_time - registered_time
     return diff_btw_time
 
+
 def get_otp_details(user_id):
     return (
         OTPDatabase.query.filter_by(user_id=user_id)
         .order_by(OTPDatabase.otp_received_at.desc())
         .first()
     )
+
 
 def get_latest_otp(user_id: int):
     latest_otp = get_otp_details(user_id)
@@ -101,14 +101,14 @@ def forgot_database_user_password(db, email, otp, new_password):
         return True
     else:
         return False
-    
+
 
 def check_user_email_verification(func):
     def wrapper(self, *args, **kwargs):
         user_id = get_jwt_identity()
-        user = get_user_by_user_id(user_id) 
+        user = get_user_by_user_id(user_id)
         if user.is_verified is False:
             abort(401, "Account not verified")
         return func(self, *args, **kwargs)
-        
+
     return wrapper

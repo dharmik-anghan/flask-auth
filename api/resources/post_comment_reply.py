@@ -1,5 +1,12 @@
+from flask import request
 from flask_restful import Resource
+from flask_jwt_extended import jwt_required, get_jwt_identity
+from api.helpers.post_helpers import check_post_if_not_deleted
 from api.helpers.user_helpers import check_user_email_verification
+from api.schemas.post_comment_reply import (
+    PostCreateCommentSchema,
+    PostCommentReplyResponseSchema,
+)
 from api.helpers.post_comment_reply_helpers import (
     reply_on_post,
     get_comments_reply_on_post,
@@ -8,10 +15,6 @@ from api.helpers.post_comment_reply_helpers import (
     like_the_reply,
     dislike_the_reply,
 )
-from api.helpers.post_helpers import check_post_if_not_deleted
-from flask_jwt_extended import jwt_required, get_jwt_identity
-from flask import request
-from api.schemas.post_comment_reply import PostCreateCommentSchema,PostCommentReplyResponseSchema
 
 
 class PostCommentReplyResource(Resource):
@@ -92,7 +95,9 @@ class PostCommentReplyResource(Resource):
             user_id = get_jwt_identity()
             post_id = request.args.get("post_id")
 
-            deleted_comment = delete_reply_in_comment(reply_id, comment_id, user_id, post_id)
+            deleted_comment = delete_reply_in_comment(
+                reply_id, comment_id, user_id, post_id
+            )
 
             if deleted_comment:
                 return {"msg": "Comment deleted"}, 204
@@ -100,9 +105,9 @@ class PostCommentReplyResource(Resource):
                 return {"msg": "Operation unsuccesfull"}
         else:
             return {"msg": "Path not defined"}, 405
-        
 
-class   ReplyLike(Resource):
+
+class ReplyLike(Resource):
     method_decorators = [jwt_required()]
 
     def post(self):
@@ -122,7 +127,7 @@ class   ReplyLike(Resource):
             else:
                 return {"msg": "Params missing"}
         else:
-            return {"msg": "Path not defined"}, 405        
+            return {"msg": "Path not defined"}, 405
 
     def delete(self):
         if request.path == "/posts/dislike-reply":
@@ -143,4 +148,3 @@ class   ReplyLike(Resource):
                 return {"msg": "Params missing"}
         else:
             return {"msg": "Path not defined"}, 405
-            

@@ -1,10 +1,10 @@
-from flask_restful import Resource
 from flask import request, jsonify
-from utils.sent_mail_to_user import sent_otp
+from flask_restful import Resource
 from extentions import db, pwd_context
+from datetime import datetime, timezone
+from utils.sent_mail_to_user import sent_otp
 from api.schemas.otp_schema import OTPSchema
 from api.helpers.user_helpers import get_user_by_mail, get_otp_details
-from datetime import datetime, timezone
 
 
 class SentOTP(Resource):

@@ -7,20 +7,21 @@ from models.post_comments import PostComment
 from api.schemas.post_like import PostLikeCreateSchema
 from api.helpers.user_helpers import get_user_by_user_id
 
+
 def update_post_count_in_user_table(user_id):
     user = get_user_by_user_id(user_id)
-    post_count = Post.query.filter_by(
-        user_id=user_id, is_deleted=False
-    ).count()
+    post_count = Post.query.filter_by(user_id=user_id, is_deleted=False).count()
 
     user.post_count = post_count
     db.session.commit()
 
     return True
 
+
 def get_post_by_post_id(post_id):
     post = Post.query.filter_by(id=post_id, is_deleted=False).first()
     return abort(404, "Post not found") if post is None else post
+
 
 def update_post(user_id, post_id, data):
     post = get_post_by_post_id(post_id)
@@ -35,6 +36,7 @@ def update_post(user_id, post_id, data):
     post = get_post_by_post_id(post_id)
 
     return post
+
 
 def delete_post(user_id, post_id):
     post = get_post_by_post_id(post_id)
@@ -53,7 +55,8 @@ def delete_post(user_id, post_id):
         return True
     except Exception as e:
         return e
-    
+
+
 def update_like_count_post_table(post_id):
     try:
         like_count = PostLike.query.filter_by(post_id=post_id).count()
@@ -64,9 +67,8 @@ def update_like_count_post_table(post_id):
         abort(404, f"{e}")
 
 
-
 def like_the_post(user_id, post_id):
-    post_liked_by = PostLike.query.filter_by(liked_by=user_id, post_id=post_id).first() 
+    post_liked_by = PostLike.query.filter_by(liked_by=user_id, post_id=post_id).first()
     if post_liked_by is None:
         schema = PostLikeCreateSchema()
         post_liked = schema.load({"post_id": post_id, "liked_by": user_id})
@@ -77,7 +79,8 @@ def like_the_post(user_id, post_id):
         return True
     else:
         return False
-    
+
+
 def dislike_the_post(user_id, post_id):
     post_liked_by = PostLike.query.filter_by(liked_by=user_id, post_id=post_id).first()
     post = get_post_by_post_id(post_id=post_id)
@@ -89,11 +92,12 @@ def dislike_the_post(user_id, post_id):
         return True
     else:
         return False
-    
+
+
 def check_post_if_not_deleted(func):
     def wrapper(self, *args, **kwargs):
         post_id = request.args.get("post_id")
         post = get_post_by_post_id(post_id)
         return func(self, *args, **kwargs)
-    return wrapper
 
+    return wrapper

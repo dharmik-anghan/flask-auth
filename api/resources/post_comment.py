@@ -1,4 +1,8 @@
+from flask import request
 from flask_restful import Resource
+from flask_jwt_extended import jwt_required, get_jwt_identity
+from api.helpers.post_helpers import check_post_if_not_deleted
+from api.schemas.post_comment import PostCommentResponseSchema
 from api.helpers.user_helpers import check_user_email_verification
 from api.helpers.post_comment_helpers import (
     comment_on_post,
@@ -8,10 +12,6 @@ from api.helpers.post_comment_helpers import (
     like_the_comment,
     dislike_the_comment,
 )
-from api.helpers.post_helpers import check_post_if_not_deleted
-from flask_jwt_extended import jwt_required, get_jwt_identity
-from flask import request
-from api.schemas.post_comment import PostCommentResponseSchema
 
 
 class PostCommentResource(Resource):
@@ -95,7 +95,7 @@ class PostCommentResource(Resource):
                 return {"msg": "Operation unsuccesfull"}
         else:
             return {"msg": "Path not defined"}, 405
-        
+
 
 class CommentLike(Resource):
     method_decorators = [jwt_required()]
@@ -113,7 +113,6 @@ class CommentLike(Resource):
                     return {"msg": "Liked comment"}
                 else:
                     return {"msg": "Alredy Liked"}
-                
 
     def delete(self):
         if request.path == "/posts/like-comment":
@@ -128,4 +127,3 @@ class CommentLike(Resource):
                     return {"msg": "disiked comment"}
                 else:
                     return {"msg": "No liked comment"}, 404
-            

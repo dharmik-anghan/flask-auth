@@ -1,10 +1,9 @@
-from flask import request,g
-from flask_jwt_extended import jwt_required, get_jwt_identity
+from extentions import db
+from flask import request, g
 from flask_restful import Resource
 from datetime import datetime, timezone
-
 from api.schemas.user import UserSchema
-from extentions import db
+from flask_jwt_extended import jwt_required, get_jwt_identity
 from api.helpers.user_helpers import get_user_id_from_token, get_user_by_user_id
 
 

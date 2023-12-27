@@ -1,9 +1,11 @@
-from flask_restful import Resource
-from api.schemas.post import PostResponseSchema, PostCreateSchema
-from flask import request, jsonify, abort
 from extentions import db
-from flask_jwt_extended import jwt_required, get_jwt_identity
 from models.post import Post
+from flask_restful import Resource
+from flask import request, jsonify, abort
+from flask_jwt_extended import jwt_required, get_jwt_identity
+from api.helpers.post_helpers import check_post_if_not_deleted
+from api.schemas.post import PostResponseSchema, PostCreateSchema
+from api.helpers.user_helpers import check_user_email_verification
 from api.helpers.post_helpers import (
     update_post_count_in_user_table,
     update_post,
@@ -12,8 +14,6 @@ from api.helpers.post_helpers import (
     like_the_post,
     dislike_the_post,
 )
-from api.helpers.user_helpers import check_user_email_verification
-from api.helpers.post_helpers import check_post_if_not_deleted
 
 
 class PostResource(Resource):
@@ -100,7 +100,7 @@ class PostLikeResource(Resource):
                 return {"msg": "Already liked by user"}
         else:
             return {"msg": "Path not found"}
-    
+
     @check_post_if_not_deleted
     @check_user_email_verification
     def delete(self):

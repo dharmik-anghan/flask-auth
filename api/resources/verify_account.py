@@ -1,6 +1,6 @@
+from extentions import db
 from flask_restful import Resource
 from flask import request, jsonify
-from extentions import db
 from api.helpers.user_helpers import verify_user_account
 
 
