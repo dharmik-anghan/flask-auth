@@ -18,9 +18,9 @@ class PostComment(db.Model):
     created_at = db.Column(
         db.DateTime(timezone=True), nullable=False, default=datetime.now
     )
-    modified_at = db.Column(db.DateTime(timezone=True), default=datetime.now)
-    comment_like_count = db.Column(db.Integer)
-    comment_reply_count = db.Column(db.Integer)
+    modified_at = db.Column(db.DateTime(timezone=True))
+    comment_like_count = db.Column(db.Integer, default=0)
+    comment_reply_count = db.Column(db.Integer, default=0)
 
     # post.py
     post_table = db.relationship("Post", back_populates="post_comment_table")

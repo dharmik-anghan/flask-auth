@@ -20,6 +20,9 @@ class User(db.Model):
     full_name = db.Column(db.String(40), nullable=False)
     username = db.Column(db.String(15), unique=True, nullable=False)
     _password = db.Column("password", db.String(255), nullable=False)
+    follower_count = db.Column(db.Integer, default=0)
+    following_count = db.Column(db.Integer, default=0)
+    post_count = db.Column(db.Integer, default=0)
 
     is_public = db.Column(db.Boolean, nullable=False)
     is_verified = db.Column(db.Boolean, default=False, nullable=False)

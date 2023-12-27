@@ -19,7 +19,7 @@ class PostCommentReply(db.Model):
     created_at = db.Column(
         db.DateTime(timezone=True), nullable=False, default=datetime.now
     )
-    modified_at = db.Column(db.DateTime(timezone=True), default=datetime.now)
+    modified_at = db.Column(db.DateTime(timezone=True))
     reply_like_count = db.Column(db.Integer, default=0)
 
     # post.py

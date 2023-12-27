@@ -15,13 +15,13 @@ class Post(db.Model):
     created_at = db.Column(
         db.DateTime(timezone=True), nullable=False, default=datetime.now
     )
-    modified_at = db.Column(db.DateTime(timezone=True), default=datetime.now)
+    modified_at = db.Column(db.DateTime(timezone=True))
     user_id = db.Column(
         db.Integer, db.ForeignKey("users.id"), nullable=False, index=True
     )
-    like_count = db.Column(db.Integer, nullable=True)
-    comment_count = db.Column(db.Integer, nullable=True)
-    is_archive = db.Column(db.Boolean, default=False)
+    like_count = db.Column(db.Integer, default=0)
+    comment_count = db.Column(db.Integer, default=0)
+    is_deleted = db.Column(db.Boolean, default=False)
 
     user_table = db.relationship("User", back_populates="post_table")
     post_like_table = db.relationship("PostLike", back_populates="post_table")
