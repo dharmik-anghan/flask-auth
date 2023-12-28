@@ -112,3 +112,13 @@ def check_user_email_verification(func):
         return func(self, *args, **kwargs)
 
     return wrapper
+
+def check_user_account_status(func):
+    def wrapper(self, *args, **kwargs):
+        user_id = get_jwt_identity()
+        user = get_user_by_user_id(user_id)
+        if user.is_deleted:
+            abort(401, "Could not find account")
+        return func(self, *args, **kwargs)
+
+    return wrapper

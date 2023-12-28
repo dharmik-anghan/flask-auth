@@ -69,7 +69,7 @@ class User(db.Model):
     following = db.relationship(
         "FollowerFollowing",
         back_populates="user_following_table",
-        foreign_keys="FollowerFollowing.user_id",
+        foreign_keys="FollowerFollowing.followed_to",
     )
 
     post_comment_reply_table = db.relationship(
@@ -79,7 +79,7 @@ class User(db.Model):
     user_request_to = db.relationship(
         "RequestToUser",
         back_populates="user_request_to_table",
-        foreign_keys="RequestToUser.user_id"
+        foreign_keys="RequestToUser.requested_to"
     )
     user_request_by = db.relationship(
         "RequestToUser",
