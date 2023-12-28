@@ -8,6 +8,7 @@ from api.resources.forgot_password import ForgotPassword
 from api.resources.post import PostResource, PostLikeResource
 from api.resources.post_comment import PostCommentResource, CommentLike
 from api.resources.post_comment_reply import PostCommentReplyResource, ReplyLike
+from api.resources.followe_following_resource import FollowerResource
 
 user_blueprint = Blueprint("user", __name__, url_prefix="/user")
 user_api = Api(user_blueprint, errors=user_blueprint.errorhandler)
@@ -83,3 +84,8 @@ comment_reply_like_api.add_resource(
 reply_like_blueprint = Blueprint("reply-like", __name__, url_prefix="/posts")
 reply_like_api = Api(reply_like_blueprint, errors=reply_like_blueprint.errorhandler)
 reply_like_api.add_resource(ReplyLike, "/like-reply", "/dislike-reply")
+
+
+follow_blueprint = Blueprint("follow", __name__, url_prefix="/user")
+follow_api = Api(follow_blueprint, errors=follow_blueprint.errorhandler)
+follow_api.add_resource(FollowerResource, "/follow", "/unfollow", "/get-req-user-list","/accept-request")
