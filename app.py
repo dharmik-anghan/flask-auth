@@ -15,7 +15,8 @@ from api.views import (
     posts_comment_blueprint,
     comment_like_blueprint,
     comment_reply_like_blueprint,
-    reply_like_blueprint
+    reply_like_blueprint,
+    follow_blueprint
 )
 
 load_dotenv()
@@ -37,6 +38,7 @@ app.register_blueprint(blueprint=posts_comment_blueprint)
 app.register_blueprint(blueprint=comment_like_blueprint)
 app.register_blueprint(blueprint=comment_reply_like_blueprint)
 app.register_blueprint(blueprint=reply_like_blueprint)
+app.register_blueprint(blueprint=follow_blueprint)
 
 db.init_app(app=app)
 jwt.init_app(app=app)
