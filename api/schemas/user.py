@@ -31,3 +31,9 @@ class UserCreateSchema(UserSchema):
         ],
     )
     is_public = Boolean(required=True)
+
+class UserRequestSchema(ma.SQLAlchemyAutoSchema):
+    class Meta:
+        model = User
+        load_instance = True
+        fields= ["id", "username", "full_name", "follower_count", "following_count", "post_count"]
