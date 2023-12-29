@@ -44,7 +44,7 @@ def run_migrations_offline() -> None:
     script output.
 
     """
-    url = os.getenv["SQLALCHEMY_DATABASE_URI"]
+    url = os.getenv["SQLALCHEMY_DATABASE_URI    "]
     context.configure(
         url=url,
         target_metadata=target_metadata,
