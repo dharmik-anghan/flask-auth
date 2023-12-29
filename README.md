@@ -161,7 +161,7 @@ The project relies on configuration files and environment variables to customize
 
 - **`OTP_EXPIRES_IN`**: Expiration time for one-time passwords.
 
-If you are setting up your google login 
+If you are setting up your Google login 
 
 - **`GOOGLE_CLIENT_ID`**: Google OAuth client ID.
 
@@ -188,3 +188,88 @@ OTP_EXPIRES_IN=1
 GOOGLE_CLIENT_ID=your_google_client_id
 GOOGLE_CLIENT_SECRET=your_google_client_secret
 CONF_URL=your_oauth_server_url
+```
+
+## Contributing
+
+Thank you for considering contributing to this project! Whether it's reporting issues, suggesting features, or contributing code, your help is highly appreciated.
+
+### Reporting Issues
+
+If you encounter any issues with the project, please open a new issue on the [GitHub Issue Tracker](https://github.com/dharmik-anghan/flask-auth/issues). Provide as much detail as possible, including steps to reproduce the issue, your environment, and any relevant error messages.
+
+### Feature Requests
+
+If you have a feature request or an enhancement idea, feel free to create an issue on the [GitHub Issue Tracker](https://github.com/dharmik-anghan/flask-auth/issues) to discuss and share your thoughts.
+
+### Contributing Code
+
+1. Fork the repository on GitHub.
+
+2. Clone your forked repository to your local machine:
+
+   ```bash
+   git clone https://github.com/your-username/your-repository.git
+   ```
+3. Create a new branch for your contribution:
+
+```bash
+git checkout -b feature/your-feature
+```
+4. Make your changes and commit them with descriptive commit messages:
+
+```bash
+git add .
+git commit -m "Add your feature or fix"
+```
+
+5. Push your changes to your forked repository:
+
+```bash
+git push origin feature/your-feature
+```
+
+6. Open a pull request on the GitHub Pull Requests page.
+
+### Code Style
+
+Follow the established coding style in the project. If there's a specific style guide, linting, or formatting requirements, mention them here.
+
+### Code of Conduct
+
+Please adhere to the Code of Conduct to ensure a positive and inclusive community.
+
+By contributing to this project, you agree that your contributions will be licensed under the project's LICENSE.
+
+Thank you for your contributions!
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+The MIT License is a permissive open source license that allows you to use, modify, and distribute the code in your own projects. It is simple and easy to understand and places very few restrictions on what you can do with the code.
+
+By contributing to this project, you agree that your contributions will be licensed under the project's MIT License.
+
+**MIT License**
+
+Copyright (c) [2023] [Dharmik Anghan]
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
