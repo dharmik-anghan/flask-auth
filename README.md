@@ -41,32 +41,18 @@ venv\Scripts\activate      # For Windows
 Create a `.env` file in the root directory of your project and use it to store sensitive configuration information. This file is crucial for security, and it should not be shared or exposed to the public. Below is a template for your `.env` file, and you should fill in the values according to your project requirements:
 
 ```ini
-FLASK_APP=
-FLASK_ENV=
-SECRET_KEY=
-FLASK_DEBUG=
-FLASK_RUN_PORT=
-FLASK_RUN_HOST=
-SQLALCHEMY_DATABASE_URI=
-JWT_SECRET_KEY=
-JWT_IDENTITY_CLAIM=
-EMAIL_PASSWORD=
-OTP_EXPIRES_IN=1
-GOOGLE_CLIENT_ID=
-GOOGLE_CLIENT_SECRET=
-CONF_URL=
+FLASK_APP=The name of your Flask application.
+FLASK_ENV=The environment in which Flask is running (development or production).
+SECRET_KEY=A secret key for session security.
+FLASK_DEBUG=Set to 1 for debugging mode.
+FLASK_RUN_PORT=Port on which the Flask application will run.
+FLASK_RUN_HOST=Hostname for the Flask application.
+SQLALCHEMY_DATABASE_URI=Database URI for SQLAlchemy.
+JWT_SECRET_KEY=Secret key for JWT (JSON Web Token) encoding and decoding.
+JWT_IDENTITY_CLAIM=Claim used to identify the user in the JWT.
+EMAIL_PASSWORD=Password for sending emails (if applicable).
+OTP_EXPIRES_IN=Expiration time for one-time passwords.
+GOOGLE_CLIENT_ID=Google OAuth client ID.
+GOOGLE_CLIENT_SECRET=Google OAuth client secret.
+CONF_URL=URL for OAuth server metadata (if using OAuth).
 ```
-FLASK_APP: The name of your Flask application.
-FLASK_ENV: The environment in which Flask is running (development or production).
-SECRET_KEY: A secret key for session security.
-FLASK_DEBUG: Set to 1 for debugging mode.
-FLASK_RUN_PORT: Port on which the Flask application will run.
-FLASK_RUN_HOST: Hostname for the Flask application.
-SQLALCHEMY_DATABASE_URI: Database URI for SQLAlchemy.
-JWT_SECRET_KEY: Secret key for JWT (JSON Web Token) encoding and decoding.
-JWT_IDENTITY_CLAIM: Claim used to identify the user in the JWT.
-EMAIL_PASSWORD: Password for sending emails (if applicable).
-OTP_EXPIRES_IN: Expiration time for one-time passwords.
-GOOGLE_CLIENT_ID: Google OAuth client ID.
-GOOGLE_CLIENT_SECRET: Google OAuth client secret.
-CONF_URL: URL for OAuth server metadata (if using OAuth).
