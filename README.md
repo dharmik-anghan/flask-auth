@@ -73,13 +73,14 @@ The project is organized into various folders and files, each serving a specific
   - `helpers/`: Helper functions for resources.
   - `resources/`: Methods for post, post-like, comment-like, comment reply, comment follower, and following are defined here.
   - `schemas/`: Schemas for various entities.
+  - `views.py`: API views for handling HTTP requests.
 
 - **`auth/`**
   - `helpers.py`: Token generation, login, token revocation, token refresh, etc.
   - `views.py`: Views related to authentication.
 
 - **`google_auth/`**
-  - Google login system implementation.
+  - `views.py`: Implementation of the Google login system.
 
 - **`models/`**
   - Database models.
