@@ -103,3 +103,34 @@ The project is organized into various folders and files, each serving a specific
 - **`requirements.txt`**
   - List of Python packages required for the project.
 
+## Usage
+
+Explain how to run your project and any additional steps required for proper execution:
+
+```bash
+python app.py
+```
+Visit http://localhost:5000 in your browser.
+
+## Database Migrations
+If your project involves database changes, you may need to apply migrations using Alembic. Follow these steps:
+
+1. Ensure your virtual environment is activated.
+2. Run the following commands to initialize Alembic:
+```bash
+alembic init alembic
+```
+3. After making changes to your database models, generate a new migration using the --autogenerate option:
+```bash
+alembic revision --autogenerate -m "Your migration message"
+```
+This command automatically detects changes in your models and generates a new migration script.
+4. Apply the migration to update the database schema:
+```bash 
+alembic upgrade head
+```
+**Note**: Ensure that your database URL is correctly configured in your .env file and config.py.
+
+**Warning**: The --autogenerate option attempts to automatically detect changes in your models. It is crucial to review the generated migration script to ensure accuracy and make any necessary adjustments.
+
+Note: If you prefer Flask-Migrate, you can use flask db migrate for migration generation.
