@@ -17,11 +17,11 @@ A detailed description of your project.
 
 ## Overview
 
-# Project Overview
+### Project Overview
 
 Welcome to Flask-auth ! This project is a comprehensive Flask-based web application that incorporates Google Authentication for user sign-in. It serves as a robust foundation for building social networking and content-sharing platforms. The project structure follows a modular approach, ensuring clear organization and maintainability.
 
-## Key Features
+### Key Features
 
 - **Google Authentication:** Enables users to sign in securely using their Google accounts, providing a seamless and trusted login experience.
 
