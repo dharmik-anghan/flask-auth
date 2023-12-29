@@ -134,3 +134,57 @@ alembic upgrade head
 **Warning**: The --autogenerate option attempts to automatically detect changes in your models. It is crucial to review the generated migration script to ensure accuracy and make any necessary adjustments.
 
 Note: If you prefer Flask-Migrate, you can use flask db migrate for migration generation.
+
+## Configuration
+
+The project relies on configuration files and environment variables to customize its behavior. Below is a list of configuration options and their purposes:
+
+- **`FLASK_APP`**: The name of your Flask application.
+
+- **`FLASK_ENV`**: The environment in which Flask is running (`development` or `production`).
+
+- **`SECRET_KEY`**: A secret key for session security.
+
+- **`FLASK_DEBUG`**: Set to `1` for debugging mode.
+
+- **`FLASK_RUN_PORT`**: Port on which the Flask application will run.
+
+- **`FLASK_RUN_HOST`**: Hostname for the Flask application.
+
+- **`SQLALCHEMY_DATABASE_URI`**: Database URI for SQLAlchemy.
+
+- **`JWT_SECRET_KEY`**: Secret key for JWT (JSON Web Token) encoding and decoding.
+
+- **`JWT_IDENTITY_CLAIM`**: Claim used to identify the user in the JWT.
+
+- **`EMAIL_PASSWORD`**: This is password you get while setting up your SMTP email.
+
+- **`OTP_EXPIRES_IN`**: Expiration time for one-time passwords.
+
+If you are setting up your google login 
+
+- **`GOOGLE_CLIENT_ID`**: Google OAuth client ID.
+
+- **`GOOGLE_CLIENT_SECRET`**: Google OAuth client secret.
+
+- **`CONF_URL`**: URL for OAuth server metadata (if using OAuth).
+
+Create a `.env` file in the root directory of your project based on the provided `.env.example`. Fill in the required values for each configuration option.
+
+Example `.env` file:
+
+```ini
+FLASK_APP=your_flask_app_name
+FLASK_ENV=development
+SECRET_KEY=your_secret_key
+FLASK_DEBUG=1
+FLASK_RUN_PORT=5000
+FLASK_RUN_HOST=localhost
+SQLALCHEMY_DATABASE_URI=your_database_uri
+JWT_SECRET_KEY=your_jwt_secret_key
+JWT_IDENTITY_CLAIM=user_id
+EMAIL_PASSWORD=your_email_password
+OTP_EXPIRES_IN=1
+GOOGLE_CLIENT_ID=your_google_client_id
+GOOGLE_CLIENT_SECRET=your_google_client_secret
+CONF_URL=your_oauth_server_url
