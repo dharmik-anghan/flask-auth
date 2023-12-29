@@ -56,3 +56,49 @@ GOOGLE_CLIENT_ID=Google OAuth client ID.
 GOOGLE_CLIENT_SECRET=Google OAuth client secret.
 CONF_URL=URL for OAuth server metadata (if using OAuth).
 ```
+
+## Installing Dependencies
+
+Install the project dependencies using pip and the requirements.txt file:
+
+```bash
+pip install -r requirements.txt
+```
+
+## Project Structure
+
+The project is organized into various folders and files, each serving a specific purpose. Below is an overview of the project structure:
+
+- **`api/`**
+  - `helpers/`: Helper functions for resources.
+  - `resources/`: Methods for post, post-like, comment-like, comment reply, comment follower, and following are defined here.
+  - `schemas/`: Schemas for various entities.
+
+- **`auth/`**
+  - `helpers.py`: Token generation, login, token revocation, token refresh, etc.
+  - `views.py`: Views related to authentication.
+
+- **`google_auth/`**
+  - Google login system implementation.
+
+- **`models/`**
+  - Database models.
+
+- **`utils/`**
+  - Email sending system.
+
+- **`app.py`**
+  - Main application file, configuring Flask, extensions, and registering blueprints.
+
+- **`config.py`**
+  - Configuration file for the project, containing environment variables.
+
+- **`extensions.py`**
+  - File for Flask extensions.
+
+- **`alembic.ini`**
+  - Configuration file for Alembic (database migration tool).
+
+- **`requirements.txt`**
+  - List of Python packages required for the project.
+
