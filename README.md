@@ -33,6 +33,7 @@ python -m venv venv
 # Activate the virtual environment
 source venv/bin/activate  # For Linux/macOS
 venv\Scripts\activate      # For Windows
+```
 
 ## .env Configuration
 
