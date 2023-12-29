@@ -17,7 +17,23 @@ A detailed description of your project.
 
 ## Overview
 
-Provide a detailed overview of your project, its purpose, and key features.
+# Project Overview
+
+Welcome to Flask-auth ! This project is a comprehensive Flask-based web application that incorporates Google Authentication for user sign-in. It serves as a robust foundation for building social networking and content-sharing platforms. The project structure follows a modular approach, ensuring clear organization and maintainability.
+
+## Key Features
+
+- **Google Authentication:** Enables users to sign in securely using their Google accounts, providing a seamless and trusted login experience.
+
+- **RESTful API:** Offers a set of RESTful API endpoints for managing user accounts, posts, likes, comments, and various interactions.
+
+- **Database Integration:** Leverages SQLAlchemy for efficient database management, ensuring data integrity and scalability.
+
+- **Token-based Authentication:** Implements JSON Web Tokens (JWT) for secure user authentication, enhancing the overall security of the application.
+
+- **Email Sending System:** Includes a utility for sending email notifications, facilitating communication and user engagement.
+
+- **Flexible Configuration:** Easily configurable through environment variables and a centralized configuration file (`config.py`), allowing customization to suit specific deployment environments.
 
 ## Setup
 
