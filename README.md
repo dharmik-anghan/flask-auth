@@ -14,7 +14,6 @@ A detailed description of your project.
 - [Database Migrations](#database-migrations)
 - [Configuration](#configuration)
 - [Contributing](#contributing)
-- [License](#license)
 
 ## Overview
 
@@ -242,34 +241,3 @@ Please adhere to the Code of Conduct to ensure a positive and inclusive communit
 By contributing to this project, you agree that your contributions will be licensed under the project's LICENSE.
 
 Thank you for your contributions!
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-The MIT License is a permissive open source license that allows you to use, modify, and distribute the code in your own projects. It is simple and easy to understand and places very few restrictions on what you can do with the code.
-
-By contributing to this project, you agree that your contributions will be licensed under the project's MIT License.
-
-**MIT License**
-
-Copyright (c) [2023] [Dharmik Anghan]
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-
